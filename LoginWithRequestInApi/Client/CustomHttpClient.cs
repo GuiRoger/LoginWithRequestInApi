@@ -14,19 +14,12 @@ namespace LoginWithRequestInApi.Client
 
 
         public async Task<UserData> Request(UserLogin data)
-        {
-            UserData result = null;
-            //result.UserEmail = data.EmailUser;
-            //result.UserPassword = data.Password;
-
+        {       
             var clientData = await _client.PostAsJsonAsync("Login/Singin", data);
-            var responseString = await clientData.Content.ReadAsStringAsync();
+            var responseString = await clientData.Content.ReadFromJsonAsync<UserData>();         
 
-            clientData.EnsureSuccessStatusCode();
-            
-
-
-            return result;
+        
+            return responseString;
         }
     }
 }

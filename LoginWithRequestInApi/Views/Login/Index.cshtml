@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2>Login</h2>
+    <div class="flex-column">
+        
+        <div class=" form1 ">
+            <label> Email</label>
+                <input type="text" id="inputEmail"/>
+            <label> Senha</label>
+                <input type="password" id="inputSenha"/>
+            <button onclick="entrar()">Logar</button>
+        </div>
+        
+
+    </div>
+</div>
+<script>
+    function entrar(){
+        const dadosTela = {
+                EmailUser: $("#inputEmail").val(),
+                Password: $("#inputSenha").val()  
+            }
+            $.ajax({
+                url:"../Home/Logar",
+                method:"POST",
+                data:dadosTela,
+                success:function(x3){
+                    if(x3.status == false){
+                        toastr.error(x3.message)
+                    }else {
+                        toastr.success(x3.message)
+                    } 
+                    
+                },
+                error:function(x4){
+                    debugger
+                    toastr.error(x4)
+                }
+            })
+    }
+
+</script>
