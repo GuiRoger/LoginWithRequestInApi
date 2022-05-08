@@ -14,7 +14,7 @@ namespace API.Controllers
       [HttpPost("Singin")]
       public UserData GetLogin(UserLogin dataUser)
       {
-            string StringCon = "Server=localhost;Database=usuariosdb;Uid=root;Pwd=Guizinho@2408;";
+            string StringCon = "Server=localhost;Database=usuariosdb;Uid=root;Pwd=******;";
             var con = new MySqlConnection(StringCon);           
 
             con.Open();
